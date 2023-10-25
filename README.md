@@ -10,7 +10,7 @@
 ### Описание модели
 Модель применяется для перевода текста с русского языка на английский.
 
-```
+```python
 !pip install transformers sentencepiece sacremoses
 from transformers import pipeline
 translator = pipeline("translation_ru_to_en", model="Helsinki-NLP/opus-mt-ru-en")
