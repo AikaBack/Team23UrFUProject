@@ -10,6 +10,7 @@
 ### Описание модели
 Модель применяется для перевода текста с русского языка на английский.
 
+### Пример использования
 ```python
 !pip install transformers sentencepiece sacremoses
 from transformers import pipeline
