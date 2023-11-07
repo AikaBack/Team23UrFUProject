@@ -10,6 +10,8 @@
 ### Описание модели
 Модель применяется для перевода текста с русского языка на английский.
 
+### Задание №1
+
 ### Пример использования
 ```python
 !pip install transformers sentencepiece sacremoses
@@ -22,3 +24,6 @@ while cycle == "да" or cycle == "Да":
   print("Переведенный текст: " + results[0]['translation_text'])
   cycle = input('Хотите продолжить? \nВведите "Да" для продолжения, "Нет" для остановки\n'
 ```
+### Задание №2
+## Пример использования
+![image](https://github.com/Lunatik3/Team12UrFUProject/assets/147321002/32327578-1d01-467b-a88a-ab602e3324c6)
