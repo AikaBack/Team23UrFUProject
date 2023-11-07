@@ -6,5 +6,5 @@ st.title('Team12UrFUProject Task 2')
 st.subheader('This app translates russian to english')
 txt = st.text_area("Place russian text there:")
 tr_txt = translator(txt)[0]['translation_text']
-st.write(f'Translated text:\n {tr_txt}')
-
+st.write('Translated text:')
+st.write(tr_txt)
