@@ -38,3 +38,7 @@ if st.button("Translate"):
         st.success(f"Translation: {translation_result}")
     except Exception as e:
         st.error(f"Error during translation: {str(e)}")
+
+# Для запуска АПИ и ВЕБ интерфейса нужно:
+# В командной строке запустить апи "uvicorn task3:app --reload --port 8000" - команда разворачивает на адрессе http://127.0.0.1:8000/ АПИ
+# В другой командной строке запустить веб "streamlit run task3.py" - команда запускает веб интерфейс
