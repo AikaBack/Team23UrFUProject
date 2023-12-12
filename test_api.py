@@ -1,5 +1,6 @@
 from fastapi.testclient import TestClient
 from main import app
+from pydantic import BaseModel
 
 class TranslationRequest(BaseModel):
     text: str
