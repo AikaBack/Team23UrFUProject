@@ -1,22 +1,28 @@
 from fastapi.testclient import TestClient
 from main import app
 
+class TranslationRequest(BaseModel):
+    text: str
+
 client = TestClient(app)
 
 
-def test_read_main():
-    response = client.get("/")
+def test_hello():
+    translation_request = TranslationRequest(text='Привет')
+    response = client.post("/translate", translation_request.dict())
     assert response.status_code == 200
-    assert response.json() == {"message": "Hello World"}
+    assert response.json()["translation"] == "Hello"
 
 
-def test_clear_history():
-    response = client.get("/clear")
+def test_cat():
+    translation_request = TranslationRequest(text='Кот')
+    response = client.post("/translate", translation_request.dict())
     assert response.status_code == 200
-    assert response.json() == {"message": "Chat history cleared"}
+    assert response.json()["translation"] == "Cat"
 
 
-def test_response_model():
-    response = client.get("/chat?input_data=Hello")
+def test_dog():
+    translation_request = TranslationRequest(text='Собака')
+    response = client.post("/translate", translation_request.dict())
     assert response.status_code == 200
-    assert response.json()
+    assert response.json()["translation"] == "Dog"
