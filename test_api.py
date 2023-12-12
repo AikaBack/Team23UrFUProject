@@ -9,19 +9,19 @@ client = TestClient(app)
 
 
 def test_hello():
-    translation_request = TranslationRequest(text='Привет')
+    translation_request = TranslationRequest(text='Один')
     response = client.post("/translate", json=translation_request.dict())
     assert response.status_code == 200
-    assert response.json()["translation"] == "Hello"
+    assert response.json()["translation"] == "One."
 
 def test_cat():
-    translation_request = TranslationRequest(text='Кот')
+    translation_request = TranslationRequest(text='Десять')
     response = client.post("/translate", json=translation_request.dict())
     assert response.status_code == 200
-    assert response.json()["translation"] == "Cat"
+    assert response.json()["translation"] == "Ten."
 
 def test_dog():
     translation_request = TranslationRequest(text='Собака')
     response = client.post("/translate", json=translation_request.dict())
     assert response.status_code == 200
-    assert response.json()["translation"] == "Dog"
+    assert response.json()["translation"] == "Dog."
