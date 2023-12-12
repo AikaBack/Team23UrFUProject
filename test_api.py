@@ -24,4 +24,4 @@ def test_dog():
     translation_request = TranslationRequest(text='Собака')
     response = client.post("/translate", json=translation_request.dict())
     assert response.status_code == 200
-    assert response.json()["translation"] == "Dog
+    assert response.json()["translation"] == "Dog"
