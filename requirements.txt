@@ -1,4 +1,7 @@
 fastapi
 pydantic
+sentencepiece
 transformers
 streamlit
+httpx
+torch
