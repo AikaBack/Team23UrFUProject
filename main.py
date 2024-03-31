@@ -3,27 +3,33 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from transformers import pipeline
 import httpx
+import streamlit as st
 
 app = FastAPI()
+
 
 class TranslationRequest(BaseModel):
     text: str
 
+
 class TranslationResponse(BaseModel):
     translation: str
 
+
 translator = pipeline("translation_ru_to_en", model="Helsinki-NLP/opus-mt-ru-en")
+
 
 @app.post("/translate", response_model=TranslationResponse)
 async def translate_text(request: TranslationRequest):
     try:
-        translation_result = translator(request.text, max_length=50)[0]['translation_text']
-        return TranslationResponse(translation=translation_result)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error during translation: {str(e)}")
+        translated_text = (
+            translator(request.text, max_length=50)
+            [0]['translation_text']
+        )
 
-# Streamlit integration
-import streamlit as st
+        return TranslationResponse(translation=translated_text)
+    except Exception as Ex:
+        raise HTTPException(status_code=500, detail=f"Error during translation: {str(Ex)}")
 
 st.title("Translation App")
 
