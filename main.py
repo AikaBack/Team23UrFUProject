@@ -1,4 +1,4 @@
-# app.py
+import streamlit as st
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from transformers import pipeline
@@ -6,13 +6,17 @@ import httpx
 
 app = FastAPI()
 
+
 class TranslationRequest(BaseModel):
     text: str
+
 
 class TranslationResponse(BaseModel):
     translation: str
 
+
 translator = pipeline("translation_ru_to_en", model="Helsinki-NLP/opus-mt-ru-en")
+
 
 @app.post("/translate", response_model=TranslationResponse)
 async def translate_text(request: TranslationRequest):
@@ -22,8 +26,7 @@ async def translate_text(request: TranslationRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error during translation: {str(e)}")
 
-# Streamlit integration
-import streamlit as st
+
 
 st.title("Translation App")
 
@@ -39,6 +42,8 @@ if st.button("Translate"):
     except Exception as e:
         st.error(f"Error during translation: {str(e)}")
 
+
 # Для запуска АПИ и ВЕБ интерфейса нужно:
-# В командной строке запустить апи "uvicorn task3:app --reload --port 8000" - команда разворачивает на адрессе http://127.0.0.1:8000/ АПИ
+# В командной строке запустить апи "uvicorn task3:app --reload --port 8000" - команда разворачивает на адрессе 
+# http://127.0.0.1:8000/ АПИ
 # В другой командной строке запустить веб "streamlit run task3.py" - команда запускает веб интерфейс
