@@ -27,7 +27,6 @@ async def translate_text(request: TranslationRequest):
         raise HTTPException(status_code=500, detail=f"Error during translation: {str(e)}")
 
 
-
 st.title("Translation App")
 
 text_to_translate = st.text_area("Enter text for translation:", "Привет, как дела?")
@@ -44,6 +43,6 @@ if st.button("Translate"):
 
 
 # Для запуска АПИ и ВЕБ интерфейса нужно:
-# В командной строке запустить апи "uvicorn task3:app --reload --port 8000" - команда разворачивает на адрессе 
+# В командной строке запустить апи "uvicorn task3:app --reload --port 8000" - команда разворачивает на адрессе
 # http://127.0.0.1:8000/ АПИ
 # В другой командной строке запустить веб "streamlit run task3.py" - команда запускает веб интерфейс
