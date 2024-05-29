@@ -10,7 +10,6 @@ class TranslationRequest(BaseModel):
 client = TestClient(app)
 
 
-
 def test_hello():
     translation_request = TranslationRequest(text='Один')
     response = client.post("/translate", json=translation_request.dict())
