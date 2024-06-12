@@ -23,4 +23,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: AikaBack/Team23UrFUProject:${{ github.sha }}-${{ github.ref_name }}
+          tags: ${{ github.sha }}
